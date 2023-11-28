@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 17px;
+    letter-spacing: 0.32px;
+    font-weight: 500;
+}
+
+.menu-buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.active{
+    color: hsl(212, 92%, 41%);
+    background-color: hsl(213, 85%, 97%);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}

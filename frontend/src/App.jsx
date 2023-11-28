@@ -1,8 +1,9 @@
+import { MainSection } from "./components/main";
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <MainSection></MainSection>
     </>
   );
 }
