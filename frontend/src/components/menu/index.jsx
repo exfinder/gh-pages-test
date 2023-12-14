@@ -6,7 +6,7 @@ const InteractiveMenu = () => {
 
   const getButtonClassName = (category) => {
     let className =
-      "btn text-left w-full text-grey font-semibold py-5 px-12 rounded-[20px] ";
+      "btn-choose text-left w-full text-lightblack font-semibold py-5 px-12 rounded-[20px] sm:px-5 sm:py-3 sm:text-sm-p ";
 
     if (activeCategory === category) {
       className += "active";
@@ -15,8 +15,8 @@ const InteractiveMenu = () => {
   };
 
   return (
-    <div className="w-full flex justify-between py-10">
-      <div className="menu-buttons w-4/12 text-left">
+    <div className="w-full flex justify-between py-10 pl-6 gap-5">
+      <div className="flex flex-col w-4/12 sm:w-6/12 text-left">
         <button
           class={getButtonClassName("info")}
           onClick={() => setActiveCategory("info")}
@@ -42,7 +42,7 @@ const InteractiveMenu = () => {
           Для дітей
         </button>
       </div>
-      <div className="instructions w-6/12 pt-6">{instructions[activeCategory]}</div>
+      <div className="instructions w-6/12 pt-6 sm:text-sm-p text-base-p">{instructions[activeCategory]}</div>
     </div>
   );
 };

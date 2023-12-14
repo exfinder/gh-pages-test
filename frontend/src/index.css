@@ -18,26 +18,58 @@ body {
 }
 
 h2 {
-    font-size: 40px;
     font-weight: 700;
 }
 
 p {
-    font-size: 17px;
     letter-spacing: 0.32px;
     font-weight: 500;
-}
+  }
+
 
 .menu-buttons{
     display: flex;
     flex-direction: column;
 }
 
-
+.btn-choose{
+    font-size: 17px;
+    transition: 0.3s all;
+}
 
 .active{
     color: hsl(212, 92%, 41%);
     background-color: hsl(213, 85%, 97%);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    margin-left: -20px;
+    transition: 0.3s all;
+
 }
+
+.btn-default{
+    background-color: #28D3A1;
+    width: 10rem;
+    height: 2.8rem;
+    color: white;
+    border-radius: 100px;
+    box-shadow: 0 0 1px 5px #84dcc5db;
+    margin: 5px;
+
+}
+
+.selected {
+    transform: scale(1.0);
+    opacity: 1;
+    transition: 0.5s all;
+  }
+  
+.not-selected {
+    transform: translateY(25%) scale(0.5);
+    opacity: 0.5;
+    transition: 0.5s all;
+}
+
+/* @media (max-width: 840px){
+    .btn-choose{
+        font-size: 12px;
+    }
+} */
