@@ -1,55 +1,85 @@
 import React, { useState } from "react";
-import men_Ph from "../../images/men.png";
-import women_Ph from "../../images/women.png";
-import child_Ph from "../../images/child.png";
 import { Button } from "../button";
+import { Person } from "./person";
 
-export function CalcSection({ children }) {
-  const [selectedImage, setSelectedImage] = useState(null);
+const personTypes = ["men", "women", "child"];
+const bodyParts = ["head", "top", "lower"];
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
+export function CalcSection() {
+  const [selectedType, setSelectedType] = useState(personTypes[0]);
+  const [selectedBodyPart, setSelectedBodyPart] = useState(bodyParts[0]);
+  const [inputData, setInputData] = useState({});
+
+  const handleTypeClick = (type) => {
+    if (type !== selectedType) {
+      setSelectedType(type);
+      setInputData({});
+    }
   };
 
-  const imageStyle = (image) => {
-    if (selectedImage === image) {
-      return "object-contain selected";
+  const handlePartChange = (part) => {
+    if (selectedBodyPart !== part) {
+      setSelectedBodyPart(part);
+      setInputData({});
     }
-    return "object-contain not-selected";
+  };
+
+  const handleInputChange = (name, value) => {
+    setInputData((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
+
+  const personTypeElements = personTypes.map((type) => (
+    <Person
+      key={type}
+      type={type}
+      part={selectedBodyPart}
+      inputData={inputData}
+      onClick={() => handleTypeClick(type)}
+      onChange={handleInputChange}
+      isSelected={selectedType === type}
+    />
+  ));
+
+  const translateSelect = {
+    head: "Головний убір",
+    top: "Верхня частина тіла",
+    lower: "Нижня частина тіла",
   };
 
   return (
     <>
       <div className="bg-grey w-full rounded-lg py px-24 py-8 mt-20 mb-8 sm:px-5">
-        {children}
-        <div className="flex justify-between gap-16">
-          <div className="flex items-end">
-            <button
-              className="h-full flex items-end"
-              onClick={() => handleImageClick("men")}
-            >
-              <img className={imageStyle("men")} src={men_Ph} alt="Men" />
-            </button>
-          </div>
-          <div className="flex items-end">
-            <button
-              className="h-full flex items-end"
-              onClick={() => handleImageClick("child")}
-            >
-              <img className={imageStyle("child")} src={child_Ph} alt="Child" />
-            </button>
-          </div>
-          <div className="flex items-end">
-            <button
-              className="h-full flex items-end"
-              onClick={() => handleImageClick("women")}
-            >
-              <img className={imageStyle("women")} src={women_Ph} alt="Women" />
-            </button>
-          </div>
+        <h2 className="text-center sm:text-sm-h text-base-h">
+          Калькулятор розмірів
+        </h2>
+        <div className="w-full flex justify-end my-4">
+          <select
+            value={selectedBodyPart}
+            onChange={(event) => handlePartChange(event.target.value)}
+            className="select-base"
+          >
+            {bodyParts.map((part) => (
+              <option key={part} value={part}>
+                {translateSelect[part]}
+              </option>
+            ))}
+          </select>
         </div>
+        <div className="flex justify-between gap-16">{personTypeElements}</div>
       </div>
-      <Button>Розрахувати</Button>
+      <Button
+        onClick={() =>
+          console.log({
+            type: selectedType,
+            bodyPart: selectedBodyPart,
+            data: inputData,
+          })
+        }
+      >
+        Розрахувати
+      </Button>
     </>
   );
 }

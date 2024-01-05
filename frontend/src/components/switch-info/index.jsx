@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import instructions from "./instructions";
 
-const InteractiveMenu = () => {
+const SwitchInfo = () => {
   const [activeCategory, setActiveCategory] = useState("info");
 
   const getButtonClassName = (category) => {
@@ -18,33 +18,35 @@ const InteractiveMenu = () => {
     <div className="w-full flex justify-between py-10 pl-6 gap-5">
       <div className="flex flex-col w-4/12 sm:w-6/12 text-left">
         <button
-          class={getButtonClassName("info")}
+          className={getButtonClassName("info")}
           onClick={() => setActiveCategory("info")}
         >
           Як правильно зняти мірки
         </button>
         <button
-          class={getButtonClassName("women")}
+          className={getButtonClassName("women")}
           onClick={() => setActiveCategory("women")}
         >
           Для жінок
         </button>
         <button
-          class={getButtonClassName("men")}
+          className={getButtonClassName("men")}
           onClick={() => setActiveCategory("men")}
         >
           Для чоловіків
         </button>
         <button
-          class={getButtonClassName("kids")}
+          className={getButtonClassName("kids")}
           onClick={() => setActiveCategory("kids")}
         >
           Для дітей
         </button>
       </div>
-      <div className="instructions w-6/12 pt-6 sm:text-sm-p text-base-p">{instructions[activeCategory]}</div>
+      <div className="instructions w-6/12 pt-6 sm:text-sm-p text-base-p">
+        {instructions[activeCategory]}
+      </div>
     </div>
   );
 };
 
-export default InteractiveMenu;
+export default SwitchInfo;

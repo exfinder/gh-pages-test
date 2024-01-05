@@ -1,8 +1,7 @@
 import React from "react";
 import { Wrapper } from "../wrapper";
 import Roulette_Ph from "../../images/roulette.png";
-import InteractiveMenu from "../menu";
-import { Button } from "../button";
+import SwitchInfo from "../switch-info";
 import { CalcSection } from "../calc";
 
 export function MainSection() {
@@ -36,17 +35,13 @@ export function MainSection() {
             <h2 className="text-center sm:text-sm-h text-base-h">
               Який Розмір Ви Носите?
             </h2>
-            <InteractiveMenu />
+            <SwitchInfo />
           </div>
         </Wrapper>
       </section>
       <section className="bg-darkgrey flex pb-16">
         <Wrapper>
-          <CalcSection>
-            <h2 className="text-center sm:text-sm-h text-base-h">
-              Калькулятор розмірів
-            </h2>
-          </CalcSection>
+          <CalcSection />
         </Wrapper>
       </section>
     </>
