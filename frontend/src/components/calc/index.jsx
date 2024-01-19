@@ -1,13 +1,54 @@
 import React, { useState } from "react";
 import { Button } from "../button";
 import { Person } from "./person";
+import { Carousel } from "./carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const personTypes = ["men", "women", "child"];
-const bodyParts = ["head", "top", "lower"];
+const bodyParts = ["none", "head", "top", "lower"];
+const translateBodyParts = {
+  none: "Категорії",
+  head: "Головний убір",
+  top: "Верхня частина тіла",
+  lower: "Нижня частина тіла",
+};
+
+const brands = ["none", "Zara", "6pm", "YOOX", "allegro", "Pull&Bear", "asos"];
+const translateBrands = {
+  none: "Бренд",
+  Zara: "Zara",
+  "6pm": "6pm",
+  YOOX: "YOOX",
+  allegro: "allegro",
+  "Pull&Bear": "Pull&Bear",
+  asos: "asos",
+};
+
+const topCl = [
+  "none",
+  "tshirt",
+  "sweater",
+  "shirt",
+  "sweatshirt",
+  "singlet",
+  "jacket",
+];
+const translateTopCl = {
+  none: "Тип одягу",
+  tshirt: "Футболки",
+  sweater: "Светри",
+  shirt: "Сорочки",
+  sweatshirt: "Світшоти",
+  singlet: "Майки",
+  jacket: "Піджаки",
+};
 
 export function CalcSection() {
   const [selectedType, setSelectedType] = useState(personTypes[0]);
   const [selectedBodyPart, setSelectedBodyPart] = useState(bodyParts[0]);
+  const [selectedBrand, setSelectedBrand] = useState(brands[0]);
+  const [selectedTopCl, setSelectedTopCl] = useState(topCl[0]);
   const [inputData, setInputData] = useState({});
 
   const handleTypeClick = (type) => {
@@ -20,6 +61,20 @@ export function CalcSection() {
   const handlePartChange = (part) => {
     if (selectedBodyPart !== part) {
       setSelectedBodyPart(part);
+      setInputData({});
+    }
+  };
+
+  const handleBrandChange = (brand) => {
+    if (selectedBrand !== brand) {
+      setSelectedBrand(brand);
+      setInputData({});
+    }
+  };
+
+  const handleTopClChange = (topCl) => {
+    if (selectedTopCl !== topCl) {
+      setSelectedTopCl(topCl);
       setInputData({});
     }
   };
@@ -42,19 +97,13 @@ export function CalcSection() {
     />
   ));
 
-  const translateSelect = {
-    head: "Головний убір",
-    top: "Верхня частина тіла",
-    lower: "Нижня частина тіла",
-  };
-
   return (
     <>
-      <div className="bg-grey w-full rounded-lg py px-24 py-8 mt-20 mb-8 sm:px-5">
+      <div className="bg-grey w-full rounded-lg py px-24 py-8 mt-20 mb-8 sm:px-5 relative">
         <h2 className="text-center sm:text-sm-h text-base-h">
           Калькулятор розмірів
         </h2>
-        <div className="w-full flex justify-end my-4">
+        <div className="flex items-end my-4 flex-col w-full gap-2 absolute right-7">
           <select
             value={selectedBodyPart}
             onChange={(event) => handlePartChange(event.target.value)}
@@ -62,12 +111,39 @@ export function CalcSection() {
           >
             {bodyParts.map((part) => (
               <option key={part} value={part}>
-                {translateSelect[part]}
+                {translateBodyParts[part]}
               </option>
             ))}
           </select>
+          <select
+            value={selectedBrand}
+            onChange={(event) => handleBrandChange(event.target.value)}
+            className="select-base"
+          >
+            {brands.map((brand) => (
+              <option key={brand} value={brand}>
+                {translateBrands[brand]}
+              </option>
+            ))}
+          </select>
+          {selectedBodyPart == "top" && (
+            <select
+              value={selectedTopCl}
+              onChange={(event) => handleTopClChange(event.target.value)}
+              className="select-base"
+            >
+              {topCl.map((cl) => (
+                <option key={cl} value={cl}>
+                  {translateTopCl[cl]}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
-        <div className="flex justify-between gap-16">{personTypeElements}</div>
+        <div className="flex justify-between gap-16 items-end mt-24">
+          {personTypeElements}
+        </div>
+        {/* <Carousel>{personTypeElements}</Carousel> */}
       </div>
       <Button
         onClick={() =>
@@ -75,6 +151,8 @@ export function CalcSection() {
             type: selectedType,
             bodyPart: selectedBodyPart,
             data: inputData,
+            brand: selectedBrand,
+            clothes: selectedTopCl,
           })
         }
       >

@@ -33,10 +33,10 @@ p {
     font-weight: 500;
   }
 
-.menu-buttons{
+/* .menu-buttons{
     display: flex;
     flex-direction: column;
-}
+} */
 
 .btn-choose{
     font-size: 17px;
@@ -129,5 +129,23 @@ textarea:focus, input:focus{
     font-weight: 600;
     padding: 2px 5px;
     border: 2px solid grey;
+    width: 20%;
     
+}
+
+.item{
+    height: 100%;
+}
+
+.owl-theme{
+    border: 2px solid red;
+}
+
+
+.owl-item{
+    left: 20px;
+}
+
+.owl-carousel .owl-item img {
+    width: unset;
 }

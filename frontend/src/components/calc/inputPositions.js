@@ -23,7 +23,7 @@ const inputPositions = {
         top: "47.2%",
         left: "109.5%",
       },
-      pantsLength: {
+      torso: {
         top: "56%",
         left: "109.5%",
       },
@@ -37,7 +37,7 @@ const inputPositions = {
         top: "52.4%",
         left: "117.5%",
       },
-      internaLength: {
+      pantsLength: {
         top: "72.8%",
         left: "117.5%",
       },
@@ -67,13 +67,13 @@ const inputPositions = {
         top: "47.9%",
         left: "113.5%",
       },
-      pantsLength: {
+      torso: {
         top: "57.3%",
         left: "113.5%",
       },
     },
     lower: {
-      waist: {
+      waistLength: {
         top: "35.1%",
         left: "112.5%",
       },
@@ -81,7 +81,7 @@ const inputPositions = {
         top: "45.5%",
         left: "112.5%",
       },
-      waistLength: {
+      pantsLength: {
         top: "65.4%",
         left: "112.5%",
       },
@@ -111,13 +111,13 @@ const inputPositions = {
         top: "52.4%",
         left: "117.5%",
       },
-      pantsLength: {
+      torso: {
         top: "63%",
         left: "117.5%",
       },
     },
     lower: {
-      waist: {
+      waistLength: {
         top: "39.1%",
         left: "118.5%",
       },
@@ -125,7 +125,7 @@ const inputPositions = {
         top: "50.1%",
         left: "118.5%",
       },
-      waistLength: {
+      pantsLength: {
         top: "71.4%",
         left: "118.5%",
       },
