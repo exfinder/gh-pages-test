@@ -10,8 +10,8 @@ export function Person(props) {
 
 
   return (
-    <div>
-      <button className="h-full flex items-end" onClick={onClick}>
+    <div className="item">
+      <button className="h-full flex items-end m-auto" onClick={onClick}>
         <div className="relative">
           <img
             src={`/src/images/${type}.png`}
@@ -19,7 +19,7 @@ export function Person(props) {
               isSelected ? "selected" : "not-selected"
             }`}
           />
-          {isSelected && (
+          {isSelected && part != 'none' && (
             <>
               <img
                 src={`/src/images/${type}/desc_${part}.png`}
