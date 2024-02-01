@@ -17,8 +17,7 @@
     "react-responsive-carousel": "^3.2.23"
   },
   "engines": {
-    "node": "14.x"
-  }, 
+    "node": "20.x"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
