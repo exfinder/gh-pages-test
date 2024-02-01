@@ -129,7 +129,7 @@ textarea:focus, input:focus{
     font-weight: 600;
     padding: 2px 5px;
     border: 2px solid grey;
-    width: 20%;
+    width: 230px;
     
 }
 
@@ -137,15 +137,10 @@ textarea:focus, input:focus{
     height: 100%;
 }
 
-.owl-theme{
-    border: 2px solid red;
-}
-
-
-.owl-item{
-    left: 20px;
-}
-
-.owl-carousel .owl-item img {
+.carousel .slide img {
     width: unset;
+}
+
+.carousel .control-dots{
+    display: none;
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "../button";
 import { Person } from "./person";
-import { Carousel } from "./carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+// import { Carousel } from "./carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const personTypes = ["men", "women", "child"];
 const bodyParts = ["none", "head", "top", "lower"];
@@ -143,7 +143,10 @@ export function CalcSection() {
         <div className="flex justify-between gap-16 items-end mt-24">
           {personTypeElements}
         </div>
-        {/* <Carousel>{personTypeElements}</Carousel> */}
+
+        {/* <div className="mt-24">
+          <Carousel showThumbs={false} showStatus={false}>{personTypeElements}</Carousel>
+        </div> */}
       </div>
       <Button
         onClick={() =>

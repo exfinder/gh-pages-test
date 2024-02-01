@@ -23,7 +23,7 @@ export function Person(props) {
             <>
               <img
                 src={`/src/images/${type}/desc_${part}.png`}
-                className="absolute desc-abs appear-animation "
+                className="absolute desc-abs appear-animation"
               />
 
               {inputNames.map((name) => (
