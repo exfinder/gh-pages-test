@@ -1,8 +1,8 @@
 import React from "react";
-import { Wrapper } from "../wrapper";
+import { Wrapper } from "../wrapper/Wrapper";
 import Roulette_Ph from "../../images/roulette.png";
-import SwitchInfo from "../switch-info";
-import { CalcSection } from "../calc";
+import SwitchInfo from "../switch-info/Switch";
+import { CalcSection } from "../calc/Calc";
 
 export function MainSection() {
   return (

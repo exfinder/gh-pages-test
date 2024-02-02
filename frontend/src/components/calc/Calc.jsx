@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../button";
+import { Button } from "../button/Button";
 import { Person } from "./person";
 // import { Carousel } from "./carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
