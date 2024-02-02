@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "../button/Button";
-import { Person } from "./person";
-// import { Carousel } from "./carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { Person } from "./Person";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Slider } from "./Slider";
 
 const personTypes = ["men", "women", "child"];
 const bodyParts = ["none", "head", "top", "lower"];
@@ -85,17 +84,24 @@ export function CalcSection() {
     });
   };
 
-  const personTypeElements = personTypes.map((type) => (
-    <Person
-      key={type}
-      type={type}
-      part={selectedBodyPart}
-      inputData={inputData}
-      onClick={() => handleTypeClick(type)}
-      onChange={handleInputChange}
-      isSelected={selectedType === type}
-    />
-  ));
+  const handleCarouselChange = (item) => {
+    handleTypeClick(personTypes[item]);
+  };
+
+  const personTypeElements = (size) => {
+    return personTypes.map((type) => (
+      <Person
+        key={type}
+        type={type}
+        part={selectedBodyPart}
+        inputData={inputData}
+        onClick={() => handleTypeClick(type)}
+        onChange={handleInputChange}
+        isSelected={selectedType === type}
+        imgSize={size}
+      />
+    ));
+  };
 
   return (
     <>
@@ -103,11 +109,11 @@ export function CalcSection() {
         <h2 className="text-center sm:text-sm-h text-base-h">
           Калькулятор розмірів
         </h2>
-        <div className="flex items-end my-4 flex-col w-full gap-2 absolute right-7">
+        <div className="flex items-end flex-col gap-2 my-4 w-full right-5 absolute sm:flex-row sm:text-sm-p sm:justify-around">
           <select
             value={selectedBodyPart}
             onChange={(event) => handlePartChange(event.target.value)}
-            className="select-base"
+            className="select-base sm:!w-[100px]"
           >
             {bodyParts.map((part) => (
               <option key={part} value={part}>
@@ -118,7 +124,7 @@ export function CalcSection() {
           <select
             value={selectedBrand}
             onChange={(event) => handleBrandChange(event.target.value)}
-            className="select-base"
+            className="select-base sm:!w-[100px]"
           >
             {brands.map((brand) => (
               <option key={brand} value={brand}>
@@ -130,7 +136,7 @@ export function CalcSection() {
             <select
               value={selectedTopCl}
               onChange={(event) => handleTopClChange(event.target.value)}
-              className="select-base"
+              className="select-base sm:!w-[100px]"
             >
               {topCl.map((cl) => (
                 <option key={cl} value={cl}>
@@ -140,13 +146,18 @@ export function CalcSection() {
             </select>
           )}
         </div>
-        <div className="flex justify-between gap-16 items-end mt-24">
-          {personTypeElements}
+        <div className="flex justify-between gap-16 items-end mt-[120px] sm:hidden md:hidden">
+          {personTypeElements("100%")}
+        </div>
+        <div className="flex justify-between gap-16 items-end mt-[120px] sm:hidden lg:hidden">
+          {personTypeElements("130px")}
         </div>
 
-        {/* <div className="mt-24">
-          <Carousel showThumbs={false} showStatus={false}>{personTypeElements}</Carousel>
-        </div> */}
+        <div className="mt-[60px] md:hidden xl:hidden">
+          <Slider onChange={handleCarouselChange}>
+            {personTypeElements("130px")}
+          </Slider>
+        </div>
       </div>
       <Button
         onClick={() =>

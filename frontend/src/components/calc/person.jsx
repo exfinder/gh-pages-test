@@ -2,12 +2,11 @@ import React from "react";
 import inputPositions from "./inputPositions";
 
 export function Person(props) {
-  const { type, part, inputData, isSelected, onClick, onChange } = props;
+  const { type, part, inputData, isSelected, onClick, onChange, imgSize} = props;
 
   const typePositions = inputPositions[type];
   const partPositions = typePositions[part];
   const inputNames = partPositions ? Object.keys(partPositions) : [];
-
 
   return (
     <div className="item">
@@ -18,8 +17,12 @@ export function Person(props) {
             className={`object-contain ${
               isSelected ? "selected" : "not-selected"
             }`}
+            style={{
+              width: imgSize,
+              left: '-100px',
+            }}
           />
-          {isSelected && part != 'none' && (
+          {isSelected && part != "none" && (
             <>
               <img
                 src={`/src/images/${type}/desc_${part}.png`}
@@ -30,7 +33,7 @@ export function Person(props) {
                 <input
                   key={name}
                   type="text"
-                  className= "input-base appear-animation " 
+                  className="input-base appear-animation "
                   name={name}
                   value={inputData[name]}
                   onClick={(event) => event.stopPropagation()}

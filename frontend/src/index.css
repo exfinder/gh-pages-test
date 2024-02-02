@@ -63,13 +63,15 @@ p {
 }
 
 .selected {
-    transform: scale(1.0);
+    transform-origin: bottom;
+    transform: scale(1);
     opacity: 1;
     transition: 0.5s all;
   }
   
 .not-selected {
-    transform: translateY(25%) scale(0.5);
+    transform-origin: bottom;
+    transform: scale(0.6);
     opacity: 0.5;
     transition: 0.5s all;
 }
@@ -129,7 +131,7 @@ textarea:focus, input:focus{
     font-weight: 600;
     padding: 2px 5px;
     border: 2px solid grey;
-    width: 230px;
+    width: 200px;
     
 }
 
@@ -143,4 +145,16 @@ textarea:focus, input:focus{
 
 .carousel .control-dots{
     display: none;
+}
+
+.carousel-arrow {
+    width: 35px;
+    height: 35px;
+    border: 3px solid #28D3A1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#28D3A1;
+    font-size: 15px;
 }
