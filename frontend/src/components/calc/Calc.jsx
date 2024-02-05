@@ -3,79 +3,32 @@ import { Button } from "../button/Button";
 import { Person } from "./Person";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Slider } from "./Slider";
-
-const personTypes = ["men", "women", "child"];
-const bodyParts = ["none", "head", "top", "lower"];
-const translateBodyParts = {
-  none: "Категорії",
-  head: "Головний убір",
-  top: "Верхня частина тіла",
-  lower: "Нижня частина тіла",
-};
-
-const brands = ["none", "Zara", "6pm", "YOOX", "allegro", "Pull&Bear", "asos"];
-const translateBrands = {
-  none: "Бренд",
-  Zara: "Zara",
-  "6pm": "6pm",
-  YOOX: "YOOX",
-  allegro: "allegro",
-  "Pull&Bear": "Pull&Bear",
-  asos: "asos",
-};
-
-const topCl = [
-  "none",
-  "tshirt",
-  "sweater",
-  "shirt",
-  "sweatshirt",
-  "singlet",
-  "jacket",
-];
-const translateTopCl = {
-  none: "Тип одягу",
-  tshirt: "Футболки",
-  sweater: "Светри",
-  shirt: "Сорочки",
-  sweatshirt: "Світшоти",
-  singlet: "Майки",
-  jacket: "Піджаки",
-};
+import dataNames from "./dataNames";
 
 export function CalcSection() {
-  const [selectedType, setSelectedType] = useState(personTypes[0]);
-  const [selectedBodyPart, setSelectedBodyPart] = useState(bodyParts[0]);
-  const [selectedBrand, setSelectedBrand] = useState(brands[0]);
-  const [selectedTopCl, setSelectedTopCl] = useState(topCl[0]);
+  const [selectedType, setSelectedType] = useState(dataNames.personTypes[0]);
+  const [selectedBodyPart, setSelectedBodyPart] = useState(dataNames.bodyParts[0]);
+  const [selectedBrand, setSelectedBrand] = useState(dataNames.brands[0]);
+  const [selectedTopCl, setSelectedTopCl] = useState(dataNames.topCl[0]);
   const [inputData, setInputData] = useState({});
 
+  const handleSelectionChange = (newValue, setSelectedValue) => {
+    if (newValue !== setSelectedValue) {
+      setSelectedValue(newValue);
+      setInputData({});
+    }
+  };
   const handleTypeClick = (type) => {
-    if (type !== selectedType) {
-      setSelectedType(type);
-      setInputData({});
-    }
+    handleSelectionChange(type, setSelectedType);
   };
-
   const handlePartChange = (part) => {
-    if (selectedBodyPart !== part) {
-      setSelectedBodyPart(part);
-      setInputData({});
-    }
+    handleSelectionChange(part, setSelectedBodyPart);
   };
-
   const handleBrandChange = (brand) => {
-    if (selectedBrand !== brand) {
-      setSelectedBrand(brand);
-      setInputData({});
-    }
+    handleSelectionChange(brand, setSelectedBrand);
   };
-
   const handleTopClChange = (topCl) => {
-    if (selectedTopCl !== topCl) {
-      setSelectedTopCl(topCl);
-      setInputData({});
-    }
+    handleSelectionChange(topCl, setSelectedTopCl);
   };
 
   const handleInputChange = (name, value) => {
@@ -85,11 +38,33 @@ export function CalcSection() {
   };
 
   const handleCarouselChange = (item) => {
-    handleTypeClick(personTypes[item]);
+    handleTypeClick(dataNames.personTypes[item]);
   };
 
-  const personTypeElements = (size) => {
-    return personTypes.map((type) => (
+  const stylesType = (currType) => {
+    if (window.innerWidth > 768) {
+      if (selectedType == "men") {
+        if (currType == "women") {
+          return "ml-auto";
+        }
+      } else if (selectedType == "women") {
+        if (currType == "men") {
+          return "mr-auto";
+        } else if (currType == "child") {
+          return "ml-auto";
+        }
+      } else if (selectedType == "child") {
+        if (currType == "women") {
+          return "mr-auto";
+        }
+      } else {
+        return "";
+      }
+    }
+  };
+
+  const personTypeElements = () => {
+    return dataNames.personTypes.map((type) => (
       <Person
         key={type}
         type={type}
@@ -98,64 +73,59 @@ export function CalcSection() {
         onClick={() => handleTypeClick(type)}
         onChange={handleInputChange}
         isSelected={selectedType === type}
-        imgSize={size}
+        stylesType={stylesType(type)}
       />
     ));
   };
 
+  const CustomSelect = ({ value, onChange, options, translateMap }) => (
+    <select
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+      className="select-base"
+    >
+      {options.map((item) => (
+        <option key={item} value={item}>
+          {translateMap[item]}
+        </option>
+      ))}
+    </select>
+  );
+
   return (
     <>
-      <div className="bg-grey w-full rounded-lg py px-24 py-8 mt-20 mb-8 sm:px-5 relative">
-        <h2 className="text-center sm:text-sm-h text-base-h">
-          Калькулятор розмірів
-        </h2>
-        <div className="flex items-end flex-col gap-2 my-4 w-full right-5 absolute sm:flex-row sm:text-sm-p sm:justify-around">
-          <select
+      <div className="bg-grey w-full rounded-lg py px-28 py-8 mt-20 mb-8 sm:px-5 md:px-16 relative">
+        <h2 className="text-center sm:text-sm-h text-base-h">Калькулятор розмірів</h2>
+        <div className="flex items-end flex-col gap-2 my-4 md:w-full md-right-5 absolute sm:flex-row sm:text-sm-p sm:justify-between">
+          <CustomSelect
             value={selectedBodyPart}
-            onChange={(event) => handlePartChange(event.target.value)}
-            className="select-base sm:!w-[100px]"
-          >
-            {bodyParts.map((part) => (
-              <option key={part} value={part}>
-                {translateBodyParts[part]}
-              </option>
-            ))}
-          </select>
-          <select
+            onChange={handlePartChange}
+            options={dataNames.bodyParts}
+            translateMap={dataNames.translateBodyParts}
+          />
+          <CustomSelect
             value={selectedBrand}
-            onChange={(event) => handleBrandChange(event.target.value)}
-            className="select-base sm:!w-[100px]"
-          >
-            {brands.map((brand) => (
-              <option key={brand} value={brand}>
-                {translateBrands[brand]}
-              </option>
-            ))}
-          </select>
-          {selectedBodyPart == "top" && (
-            <select
+            onChange={handleBrandChange}
+            options={dataNames.brands}
+            translateMap={dataNames.translateBrands}
+          />
+          {selectedBodyPart === "top" && (
+            <CustomSelect
               value={selectedTopCl}
-              onChange={(event) => handleTopClChange(event.target.value)}
-              className="select-base sm:!w-[100px]"
-            >
-              {topCl.map((cl) => (
-                <option key={cl} value={cl}>
-                  {translateTopCl[cl]}
-                </option>
-              ))}
-            </select>
+              onChange={handleTopClChange}
+              options={dataNames.topCl}
+              translateMap={dataNames.translateTopCl}
+            />
           )}
         </div>
-        <div className="flex justify-between gap-16 items-end mt-[120px] sm:hidden md:hidden">
-          {personTypeElements("100%")}
-        </div>
-        <div className="flex justify-between gap-16 items-end mt-[120px] sm:hidden lg:hidden">
-          {personTypeElements("130px")}
-        </div>
+        <div className="flex items-end mt-[120px] sm:hidden">{personTypeElements()}</div>
 
-        <div className="mt-[60px] md:hidden xl:hidden">
-          <Slider onChange={handleCarouselChange}>
-            {personTypeElements("130px")}
+        <div className="mt-[60px] md:hidden">
+          <Slider
+            onChange={handleCarouselChange}
+            selectedItem={dataNames.personTypes.indexOf(selectedType)}
+          >
+            {personTypeElements()}
           </Slider>
         </div>
       </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-export function Slider({ children, onChange}) {
+export function Slider({ children, onChange, selectedItem }) {
   return (
     <>
       <Carousel
         showThumbs={false}
         showStatus={false}
         onChange={onChange}
+        selectedItem={selectedItem}
         renderArrowPrev={(clickHandler, hasPrev) => {
           return (
             <div
@@ -17,7 +18,7 @@ export function Slider({ children, onChange}) {
               onClick={clickHandler}
             >
               <div className="carousel-arrow">
-                <i class="fa-solid fa-angle-left"></i>
+                <i className="fa-solid fa-angle-left"></i>
               </div>
             </div>
           );
@@ -31,7 +32,7 @@ export function Slider({ children, onChange}) {
               onClick={clickHandler}
             >
               <div className="carousel-arrow">
-                <i class="fa-solid fa-angle-right"></i>
+                <i className="fa-solid fa-angle-right"></i>
               </div>
             </div>
           );
