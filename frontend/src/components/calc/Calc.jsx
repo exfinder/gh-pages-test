@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../button/Button";
-import { Person } from "./Person";
+import { Person } from "./person";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Slider } from "./Slider";
 import dataNames from "./dataNames";
@@ -42,24 +42,22 @@ export function CalcSection() {
   };
 
   const stylesType = (currType) => {
-    if (window.innerWidth > 768) {
-      if (selectedType == "men") {
-        if (currType == "women") {
-          return "ml-auto";
-        }
-      } else if (selectedType == "women") {
-        if (currType == "men") {
-          return "mr-auto";
-        } else if (currType == "child") {
-          return "ml-auto";
-        }
-      } else if (selectedType == "child") {
-        if (currType == "women") {
-          return "mr-auto";
-        }
-      } else {
-        return "";
+    if (selectedType == "men") {
+      if (currType == "women") {
+        return "ml-auto";
       }
+    } else if (selectedType == "women") {
+      if (currType == "men") {
+        return "mr-auto";
+      } else if (currType == "child") {
+        return "ml-auto";
+      }
+    } else if (selectedType == "child") {
+      if (currType == "women") {
+        return "mr-auto";
+      }
+    } else {
+      return "";
     }
   };
 
@@ -96,7 +94,7 @@ export function CalcSection() {
     <>
       <div className="bg-grey w-full rounded-lg py px-28 py-8 mt-20 mb-8 sm:px-5 md:px-16 relative">
         <h2 className="text-center sm:text-sm-h text-base-h">Калькулятор розмірів</h2>
-        <div className="flex items-end flex-col gap-2 my-4 md:w-full md-right-5 absolute sm:flex-row sm:text-sm-p sm:justify-between">
+        <div className="flex items-end flex-col gap-3 my-4 md:right-5 absolute sm:flex-row sm:text-sm-p sm:justify-center sm:w-11/12">
           <CustomSelect
             value={selectedBodyPart}
             onChange={handlePartChange}

@@ -3,6 +3,7 @@ import { Wrapper } from "../wrapper/Wrapper";
 import Roulette_Ph from "../../images/roulette.png";
 import SwitchInfo from "../switch-info/Switch";
 import { CalcSection } from "../calc/Calc";
+import { Slider } from "../calc/Slider";
 
 export function MainSection() {
   return (
@@ -29,6 +30,7 @@ export function MainSection() {
           </div>
         </Wrapper>
       </section>
+
       <section>
         <Wrapper>
           <div className="w-full py-10">

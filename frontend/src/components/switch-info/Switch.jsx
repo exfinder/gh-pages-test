@@ -5,44 +5,30 @@ const SwitchInfo = () => {
   const [activeCategory, setActiveCategory] = useState("info");
 
   const getButtonClassName = (category) => {
-    let className =
-      "btn-choose text-left w-full text-lightblack font-semibold py-5 px-12 rounded-[20px] sm:px-5 sm:py-3 sm:text-sm-p ";
-
-    if (activeCategory === category) {
-      className += "active";
-    }
+    let className = `btn-choose ${activeCategory === category ? "btn-choose-active" : ""}`;
     return className;
   };
 
   return (
-    <div className="w-full flex justify-between py-10 pl-6 gap-5">
-      <div className="flex flex-col w-4/12 sm:w-6/12 text-left">
+    <div className="w-full flex justify-between py-10 pl-6 gap-5 sm:flex-col sm:py-5 sm:gap-2">
+      <div className="flex flex-col w-4/12 sm:w-full text-left sm:flex-row sm:w-unset justify-around">
         <button
-          className={getButtonClassName("info")}
+          className={`sm:hidden ${getButtonClassName("info")}`}
           onClick={() => setActiveCategory("info")}
         >
           Як правильно зняти мірки
         </button>
-        <button
-          className={getButtonClassName("women")}
-          onClick={() => setActiveCategory("women")}
-        >
+        <button className={getButtonClassName("women")} onClick={() => setActiveCategory("women")}>
           Для жінок
         </button>
-        <button
-          className={getButtonClassName("men")}
-          onClick={() => setActiveCategory("men")}
-        >
+        <button className={getButtonClassName("men")} onClick={() => setActiveCategory("men")}>
           Для чоловіків
         </button>
-        <button
-          className={getButtonClassName("kids")}
-          onClick={() => setActiveCategory("kids")}
-        >
+        <button className={getButtonClassName("kids")} onClick={() => setActiveCategory("kids")}>
           Для дітей
         </button>
       </div>
-      <div className="instructions w-6/12 pt-6 sm:text-sm-p text-base-p">
+      <div className="instructions w-6/12 pt-6 sm:text-sm-p text-base-p sm:w-full">
         {instructions[activeCategory]}
       </div>
     </div>

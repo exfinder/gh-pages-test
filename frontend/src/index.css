@@ -41,9 +41,15 @@ p {
 .btn-choose{
     font-size: 17px;
     transition: 0.3s all;
+    text-align: left;
+    width: 100%;
+    color: #333;
+    font-weight: 600;
+    padding: 1.25rem 3rem 1.25rem 3rem;
+    border-radius: 20px;
 }
 
-.active{
+.btn-choose-active{
     color: hsl(212, 92%, 41%);
     background-color: hsl(213, 85%, 97%);
     margin-left: -20px;
@@ -206,5 +212,15 @@ textarea:focus, input:focus{
     }
     .translate-left{
         margin-left: -100px;
+    }
+    .btn-choose{
+        font-size: 13px;
+        padding: 10px 20px 10px 20px;
+        width: unset;
+        text-align: center;
+
+    }
+    .btn-choose-active{
+        margin-left: unset;
     }
   }
