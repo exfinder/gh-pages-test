@@ -1,8 +1,8 @@
 import React from "react";
-import { Wrapper } from "../wrapper";
+import { Wrapper } from "../wrapper/Wrapper";
 import Roulette_Ph from "../../images/roulette.png";
-import SwitchInfo from "../switch-info";
-import { CalcSection } from "../calc";
+import SwitchInfo from "../switch-info/Switch";
+import { CalcSection } from "../calc/Calc";
 
 export function MainSection() {
   return (
@@ -11,19 +11,14 @@ export function MainSection() {
         <Wrapper>
           <div className="w-full flex sm:flex-col justify-between py-10">
             <div className="w-5/12 sm:w-full flex items-center sm:-mb-12">
-              <img
-                className="mx-auto sm:w-[300px] mr-0"
-                src={Roulette_Ph}
-                alt=""
-              />
+              <img className="mx-auto sm:w-[300px] mr-0" src={Roulette_Ph} alt="" />
             </div>
             <div className="w-5/12 sm:w-9/12 text-center">
               <h2 className="sm:text-sm-h text-base-h">Про Наш Продукт</h2>
               <p className="py-6 sm:text-sm-p text-base-p">
-                Ми створили продукт, щоб допомогти вам з розмірами одягу. У нас
-                є таблиці розмірів та вимірювань від різних брендів, які
-                постійно оновлюються. Ми додаємо нові бренди, продукти та модні
-                поради, щоб усе було зручно та зрозуміло
+                Ми створили продукт, щоб допомогти вам з розмірами одягу. У нас є таблиці розмірів
+                та вимірювань від різних брендів, які постійно оновлюються. Ми додаємо нові бренди,
+                продукти та модні поради, щоб усе було зручно та зрозуміло
               </p>
             </div>
           </div>
@@ -32,9 +27,7 @@ export function MainSection() {
       <section>
         <Wrapper>
           <div className="w-full py-10">
-            <h2 className="text-center sm:text-sm-h text-base-h">
-              Який Розмір Ви Носите?
-            </h2>
+            <h2 className="text-center sm:text-sm-h text-base-h">Який Розмір Ви Носите?</h2>
             <SwitchInfo />
           </div>
         </Wrapper>

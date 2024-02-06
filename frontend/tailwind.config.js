@@ -7,13 +7,13 @@ export default {
   theme: {
     screens: {
       'xl': '1210px',
-      'lg': '1024px',
-      'sm': {'max': '840px'},
+      'md': '768px',
+      'sm': {'max': '768px'},
 
     },
     extend: {
       colors: {
-        'mainblue': '	hsl(212, 92%, 41%)',
+        'mainblue': '#0054A4',
         'lightblue': 'hsl(213, 85%, 97%)',
         'lightblack': 'hsl(211, 18%, 23%)',
         'grey': '#EFF1F4',
