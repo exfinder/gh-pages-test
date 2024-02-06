@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     port: 80,
   },
-  base: "/gh-pages-test/",
+  base: "/gh-pages-test",
 });
