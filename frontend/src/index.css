@@ -157,14 +157,14 @@ textarea:focus, input:focus{
 }
 
 .carousel-arrow {
+    border-width: 3px;
+    border-style: solid;
     width: 35px;
     height: 35px;
-    border: 3px solid #28D3A1;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color:#28D3A1;
     font-size: 15px;
 }
 

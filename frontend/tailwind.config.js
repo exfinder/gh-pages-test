@@ -13,7 +13,7 @@ export default {
     },
     extend: {
       colors: {
-        'mainblue': '	hsl(212, 92%, 41%)',
+        'mainblue': '#0054A4',
         'lightblue': 'hsl(213, 85%, 97%)',
         'lightblack': 'hsl(211, 18%, 23%)',
         'grey': '#EFF1F4',

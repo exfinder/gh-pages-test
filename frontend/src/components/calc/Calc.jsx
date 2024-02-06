@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../button/Button";
-import { Person } from "./person";
+import { Person } from "./Person";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Slider } from "./Slider";
 import dataNames from "./dataNames";
@@ -122,6 +122,8 @@ export function CalcSection() {
           <Slider
             onChange={handleCarouselChange}
             selectedItem={dataNames.personTypes.indexOf(selectedType)}
+            displayItems={1}
+            loop={false}
           >
             {personTypeElements()}
           </Slider>
